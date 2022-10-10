@@ -20,7 +20,9 @@ class Node
 end
 
 class LinkedList 
+
 include Enumerable
+
   def initialize
     @head = Node.new
     @tail = Node.new
@@ -29,8 +31,9 @@ include Enumerable
   end
 
   def [](i)
-    each_with_index { |link, j| return link if i == j }
-    nil
+
+    # each_with_index { |link, j| return link if i == j }
+    # nil
   end
 
   def first
@@ -44,13 +47,19 @@ include Enumerable
   end
 
   def get(key)
+    # return self.key if self.include?(key)
+    # nil
   end
 
   def include?(key)
+    # self.include?(key)
   end
 
   def append(key, val)
-    self.append(Node.new(key, val))
+    new_tail = Node.new(key, val)
+    @tail.next = new_tail
+    new_tail.prev = @tail
+    @tail = new_tail
   end
 
   def update(key, val)
