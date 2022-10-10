@@ -111,7 +111,13 @@ class ResizingIntSet
   end
 
   def resize!
-    self.store = Array.new(num_buckets*2) { Array.new }
-    
+    # debugger
+    array = @store.flatten
+    @store = Array.new(num_buckets*2) { Array.new }
+    array.each do |ele|
+      self.insert(ele)
+      @count -= 1
+    end
   end
+
 end
